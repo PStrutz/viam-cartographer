@@ -113,8 +113,9 @@ func GetOptionalParameters(config *Config, defaultLidarDataRateMsec, defaultIMUD
 
 	// feature flag for new config
 	if config.IMUIntegrationEnabled {
-		strCameraDataFreqHz, ok := config.Camera["data_frequency_hz"]
-		if !ok {
+		strCameraDataFreqHz, exists := 
+config.Camera["data_frequency_hz"]
+		if !exists {
 			optionalConfigParams.LidarDataRateMsec = defaultLidarDataRateMsec
 			logger.Debugf("config did not provide camera[data_frequency_hz], setting to default value of %d", 1000/defaultLidarDataRateMsec)
 		} else {
