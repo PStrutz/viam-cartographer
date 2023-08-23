@@ -113,8 +113,7 @@ func GetOptionalParameters(config *Config, defaultLidarDataRateMsec, defaultIMUD
 
 	// feature flag for new config
 	if config.IMUIntegrationEnabled {
-		strCameraDataFreqHz, exists := 
-config.Camera["data_frequency_hz"]
+		strCameraDataFreqHz, exists := config.Camera["data_frequency_hz"]
 		if !exists {
 			optionalConfigParams.LidarDataRateMsec = defaultLidarDataRateMsec
 			logger.Debugf("config did not provide camera[data_frequency_hz], setting to default value of %d", 1000/defaultLidarDataRateMsec)
@@ -127,7 +126,7 @@ config.Camera["data_frequency_hz"]
 				optionalConfigParams.LidarDataRateMsec = 1000 / lidarDataFreqHz
 			}
 		}
-		exists := false
+		exists = false
 		imuName, exists := config.MovementSensor["name"]
 		if exists {
 			optionalConfigParams.ImuName = imuName
